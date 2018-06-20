@@ -5,9 +5,14 @@ import Exceptions.*;
 public class CadastroCantina {
 	private RepositorioCantina repositorioCantina; 
 	
-	CadastroCantina(RepositorioCantina repositorioCantina){
-		this.repositorioCantina = repositorioCantina; 
-	}
+	public CadastroCantina(int escolha){
+		if (escolha == 1) {
+			this.repositorioCantina = new RepositorioCantinaLista(); 
+		}
+		if (escolha == 2) {
+			this.repositorioCantina = new RepositorioCantinaArray();
+		}
+		}
 
 	public void inserirCantina(Cantina cant) throws CantinaExistenteException{
 		if (repositorioCantina.procurar(cant) == false) {

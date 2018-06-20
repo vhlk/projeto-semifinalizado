@@ -5,8 +5,13 @@ import Exceptions.*;
 public class CadastroMaterial {
 	private RepositorioMaterial repositorioMaterial; 
 	
-	public CadastroMaterial(RepositorioMaterial repositorioMaterial){
-		this.repositorioMaterial = repositorioMaterial; 
+	public CadastroMaterial(int escolha){
+		if (escolha == 1) {
+			this.repositorioMaterial = new RepositorioMaterialLista(); 
+		}
+		if (escolha == 2) {
+			this.repositorioMaterial = new RepositorioMaterialArray();
+		}
 	}
 
 	

@@ -1,12 +1,18 @@
 package Pessoa;
+
 import Exceptions.*;
 
 public class CadastroPessoa {
 
 private RepositorioPessoa repositorioPessoa; 
 	
-	public CadastroPessoa(RepositorioPessoa repositorioPessoa){
-		this.repositorioPessoa = repositorioPessoa; 
+	public CadastroPessoa(int escolha){
+		if (escolha == 1) {
+			this.repositorioPessoa = new RepositorioPessoaLista(); 
+		}
+		if (escolha == 2) {
+			this.repositorioPessoa = new RepositorioPessoaArray();
+		}
 	}
 	
 	public void inserirPessoa(Pessoa pessoa) throws PessoaExistenteException{

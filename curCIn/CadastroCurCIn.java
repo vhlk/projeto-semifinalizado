@@ -14,12 +14,12 @@ public class CadastroCurCIn {
 	private CadastroMaterial cadastroMaterial;
 	private CadastroPessoa cadastroPessoa;
 
-	CadastroCurCIn(CadastroCantina cadastroCantina, CadastroCurso cadastroCurso, CadastroDisciplina cadastroDisciplina, CadastroMaterial cadastroMaterial, CadastroPessoa cadastroPessoa){
-		this.cadastroCantina = cadastroCantina;
-		this.cadastroCurso = cadastroCurso;
-		this.cadastroDisciplina = cadastroDisciplina;
-		this.cadastroMaterial = cadastroMaterial;
-		this.cadastroPessoa = cadastroPessoa;
+	CadastroCurCIn(int escolha){
+		this.cadastroCantina = new CadastroCantina(escolha);
+		this.cadastroCurso = new CadastroCurso(escolha);
+		this.cadastroDisciplina = new CadastroDisciplina(escolha);
+		this.cadastroMaterial = new CadastroMaterial(escolha);
+		this.cadastroPessoa = new CadastroPessoa(escolha);
 		
 	}
 	

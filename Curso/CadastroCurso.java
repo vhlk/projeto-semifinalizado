@@ -5,13 +5,14 @@ import Exceptions.*;
 public class CadastroCurso {
 	
 	private RepositorioCurso repositorioCurso; 
-	
-	CadastroCurso(RepositorioCursoLista repositorioCurso){
-		this.repositorioCurso = repositorioCurso; 
-	}
 
-	CadastroCurso(RepositorioCursoArray repositorioCurso){
-		this.repositorioCurso = repositorioCurso;
+	public CadastroCurso(int escolha){
+		if (escolha == 1) {
+			this.repositorioCurso = new RepositorioCursoLista(); 
+		}
+		if (escolha == 2) {
+			this.repositorioCurso = new RepositorioCursoArray();
+		}
 	}
 	
 	public void inserirCurso(Curso curso) throws CursoExistenteException{

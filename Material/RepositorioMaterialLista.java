@@ -1,6 +1,6 @@
 package Material;
 
-public class RepositorioMaterialLista {
+public class RepositorioMaterialLista implements RepositorioMaterial {
 	private Material mat;
 	private RepositorioMaterialLista proximo;
 

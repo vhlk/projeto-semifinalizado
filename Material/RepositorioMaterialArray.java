@@ -1,6 +1,6 @@
 package Material;
 
-public class RepositorioMaterialArray {
+public class RepositorioMaterialArray implements RepositorioMaterial {
 	private Material[] materiais;
 	private int contador;
 

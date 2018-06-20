@@ -1,6 +1,8 @@
 package Disciplina;
 
-public class RepositorioDisciplinaLista {
+import Exceptions.MensalidadeIncorretaException;
+
+public class RepositorioDisciplinaLista implements RepositorioDisciplina {
 	private Disciplina atual;
 	private RepositorioDisciplinaLista prox;
 
@@ -44,5 +46,12 @@ public class RepositorioDisciplinaLista {
 		} else {
 			this.prox.atualizar(disciplinaAtual, disciplinaNova);
 		}
+	}
+
+	@Override
+	public void atualizarMensalidade(Disciplina disciplinaAntiga, Disciplina disciplinaNova)
+			throws MensalidadeIncorretaException {
+		// TODO Auto-generated method stub
+		
 	}
 }

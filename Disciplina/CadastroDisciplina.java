@@ -5,8 +5,13 @@ import Exceptions.*;
 public class CadastroDisciplina {
 	private RepositorioDisciplina repositorioDisciplina;
 	
-	CadastroDisciplina(RepositorioDisciplina repositorioDisciplina) {
-		this.repositorioDisciplina = repositorioDisciplina;
+	public CadastroDisciplina(int escolha) {
+		if (escolha == 1) {
+			this.repositorioDisciplina = new RepositorioDisciplinaLista(); 
+		}
+		if (escolha == 2) {
+			this.repositorioDisciplina = new RepositorioDisciplinaArray();
+		}
 	}
 
 	
