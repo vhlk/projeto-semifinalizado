@@ -56,4 +56,16 @@ public class RepositorioCantinaLista implements RepositorioCantina {
 		return aviso;
 	}
 
+	@Override
+	public Cantina nome(String nome) {
+		Cantina cant = null;
+		if (this.cant.getNome().equals(nome)) {
+			cant = this.cant;
+			return cant;
+		}
+		else {
+			return this.prox.nome(nome);
+		}
+	}
+
 }

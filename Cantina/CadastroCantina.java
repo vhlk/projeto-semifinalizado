@@ -23,6 +23,10 @@ public class CadastroCantina {
 		}
 	}
 	
+	public Cantina nomeCantina(String nome){
+		return repositorioCantina.nome(nome);		
+	}
+	
 	public boolean procurarCantina(Cantina cant) {
 		return repositorioCantina.procurar(cant);
 	}

@@ -6,6 +6,8 @@ public interface RepositorioCantina {
 	
 	public void inserir(Cantina cantina) throws CantinaExistenteException;
 	
+	public Cantina nome(String nome);
+	
 	public boolean procurar(Cantina cantina);
 	
 	public void atualizar(Cantina nova);

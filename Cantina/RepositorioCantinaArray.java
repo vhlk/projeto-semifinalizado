@@ -25,6 +25,16 @@ public class RepositorioCantinaArray implements RepositorioCantina {
 			}
 		}
 	}
+	
+	public Cantina nome(String nome) {
+		Cantina cant = null;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].getNome().equals(nome)) {
+				cant = array[i] ;
+			}
+		}
+		return cant;
+	}
 
 	public boolean procurar(Cantina cantina) {
 		boolean tem = false;
@@ -57,12 +67,12 @@ public class RepositorioCantinaArray implements RepositorioCantina {
 	}
 
 	public String alarmeInicio(Cantina cantina) {
-		String aviso = cantina.getNome() + " acabou de abrir!";
+		String aviso = "A cantina " + cantina.getNome() + " acabou de abrir!";
 		return aviso;
 	}
 
 	public String alarmeFim(Cantina cantina) {
-		String aviso = cantina.getNome() + " acabou de fechar! :(";
+		String aviso = "A cantina " + cantina.getNome() + " acabou de fechar! :(";
 		return aviso;
 	}
 

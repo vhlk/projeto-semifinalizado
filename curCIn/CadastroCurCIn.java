@@ -27,6 +27,10 @@ public class CadastroCurCIn {
 		cadastroCantina.inserirCantina(cant);
 	}
 	
+	public Cantina nomeCantina(String nome) {
+		return cadastroCantina.nomeCantina(nome);
+	}
+	
 	public boolean procurarCantina(Cantina cant) {
 		return cadastroCantina.procurarCantina(cant);
 	}
