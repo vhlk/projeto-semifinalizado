@@ -25,7 +25,7 @@ public class Programa {
 			CadastroCurCIn cc = new CadastroCurCIn(tipoRep);
 			boolean repetidor = true;
 			while (repetidor) {
-				System.out.println("Digite o numero do tipo de registro que você deseja manipular:");
+				System.out.println("Digite o numero do tipo de registro que voce deseja manipular:");
 				System.out.println("0 - Sair");
 				System.out.println("1 - Cantina");
 				System.out.println("2 - Curso");
@@ -40,16 +40,16 @@ public class Programa {
 				}
 
 				else if (codigoRegistro == 1) {
-					System.out.println("Você escolheu cantina! O que você deseja fazer?");
-					System.out.println("1 - Criar uma cantina e registrá-la no repositório");
+					System.out.println("Voce escolheu cantina! O que voce deseja fazer?");
+					System.out.println("1 - Criar uma cantina e registra-la no repositorio");
 					System.out.println("2 - Manipular as cantinas existentes.");
 					int cRCantina = Integer.parseInt(in.nextLine());
 
 					if (cRCantina == 1) {
-						System.out.println("Você deseja registrar uma cantina!");
+						System.out.println("Voce deseja registrar uma cantina!");
 						System.out.println("Qual o nome do prato principal da cantina? ");
 						String nomeP = in.nextLine();
-						System.out.println("Qual o seu preço? ");
+						System.out.println("Qual o seu preco? ");
 						double precoP = Double.parseDouble(in.nextLine());
 						Prato prato = new Prato(nomeP, precoP);
 						System.out.println("Devemos registrar o gerente no sistema.");
@@ -70,17 +70,17 @@ public class Programa {
 
 					else if (cRCantina == 2) {
 						System.out.println("O que deseja fazer?");
-						System.out.println("1 - Ver quais cantinas estâo no repositório");
+						System.out.println("1 - Ver quais cantinas estao no repositorio");
 						System.out.println("2 - Imprimir dados de alguma cantina especifica");
 						System.out.println("3 - Manipular alguma cantina especifica");
-						System.out.println("4 - Manipular o repositório");
+						System.out.println("4 - Manipular o repositorio");
 						int tipoM = Integer.parseInt(in.nextLine());
 						if (tipoM == 1) {
 							System.out.println("As seguintes cantinas estao no sistema: ");
 							// mostrar nome das cantinas que estao no sistema
 
 						} else if (tipoM == 2) {
-							System.out.println("Qual o nome da cantina que você deseja ver?");
+							System.out.println("Qual o nome da cantina que voce deseja ver?");
 							String nomeC = in.nextLine();
 							System.out.println("Nome da cantina: " + cc.nomeCantina(nomeC).getNome());
 							System.out.println("Prato principal: " + cc.nomeCantina(nomeC).getPrato().getNome());
@@ -90,7 +90,7 @@ public class Programa {
 							System.out.println("");
 
 						} else if (tipoM == 3) {
-							System.out.println("Qual o nome da cantina que você deseja manipular?");
+							System.out.println("Qual o nome da cantina que voce deseja manipular?");
 							String nomeC = in.nextLine();
 							System.out.println("Deseja mudar seu nome? (S/N)");
 							String respN = in.nextLine();
@@ -106,17 +106,17 @@ public class Programa {
 							if (respP.equals("S") || respP.equals("s")) {
 								System.out.println("Qual o nome do novo prato?");
 								String respPN = in.nextLine();
-								System.out.println("Qual será seu preco?");
+								System.out.println("Qual sera seu preco?");
 								Double respPP = Double.parseDouble(in.nextLine());
 								Prato prato = new Prato(respPN, respPP);
 								cc.nomeCantina(nomeC).setPrato(prato);
 							}
 							System.out.println("Dados alterados com sucesso!");
 						} else if (tipoM == 4) {
-							System.out.println("O que deseja fazer no repositório? ");
+							System.out.println("O que deseja fazer no repositorio? ");
 							System.out.println("1 - Checar se uma cantina existe");
-							System.out.println("2 - Remover uma cantina do repositório");
-							System.out.println("3 - Soar alarme de início de expediente");
+							System.out.println("2 - Remover uma cantina do repositorio");
+							System.out.println("3 - Soar alarme de inicio de expediente");
 							System.out.println("4 - Soar alarme de fim de expediente");
 							int manRep = Integer.parseInt(in.nextLine());
 							if (manRep == 1) {
@@ -150,8 +150,93 @@ public class Programa {
 					}
 				}
 
-				else if (codigoRegistro == 2) {
+					else if (codigoRegistro == 2) {
+						System.out.println("Voce escolheu curso! O que voce deseja fazer?");
+						System.out.println("1 - Inserir curso e registrar no repositorio");
+						System.out.println("2 - Outros");
+						int cRCurso = Integer.parseInt(in.nextLine());
 
+						if (cRCurso == 1) {
+							System.out.println("Voce deseja registrar um curso!");
+							System.out.println("Qual o endereco do curso? ");
+							String endereco = in.nextLine();
+							System.out.println("Quantas salas tem o curso? ");
+							double qtdSalas = in.nextDouble());
+							System.out.println("Quantos setores tem o curso? ");
+							double setores = in.nextDouble());
+							System.out.println("Qual o nome do seu curso?");
+							String nome = in.nextLine();
+							Cantina curso = new Curso(nome, endereco, qtdSalas, setores);
+							cc.inserirCurso(curso);
+							System.out.println("O curso " + curso.getNome() + " foi inserido no sistema.");
+							System.out.println("");	
+						}	
+						else if (cRCurso == 2) {
+							System.out.println("O que deseja fazer?");
+							System.out.println("1 - Imprimir dados de algum curso especifico");
+							System.out.println("2 - Manipular algum curso especifico");
+							System.out.println("3 - Manipular o repositorio");
+
+							int tipoM = Integer.parseInt(in.nextLine());
+							if (tipoM == 1) {
+								System.out.println("Qual o nome do curso que voce deseja ver?");
+								String nome = in.nextLine();
+								System.out.println("Nome da curso: " + cc.nomeCurso(nome).getNome());
+								System.out.println("Quantidade de setores: " + cc.nomeCurso(nome).getSetores().getNome());
+								System.out.println(
+										"Quantidade de salas: " + cc.nomeCurso(nome).getSalas().getNome());
+								System.out.println("Localizado no endereco: " + cc.nomeCurso(nome).getEndereco().getNome());
+								System.out.println("");
+
+							} 
+							else if (tipoM == 2) {
+								System.out.println("Qual o nome do curso que voce deseja manipular?");
+								String nome = in.nextLine();
+								System.out.println("Deseja mudar seu nome? (S/N)");
+								String resp = in.nextLine();
+								if (resp.equals("S") || resp.equals("s")) {
+									System.out.println("Qual sera o novo nome?");
+									String nomeNovo = in.nextLine();
+									cc.nomeCantina(nome).setNome(nomeNovo);
+									nome = nomeNovo;
+									System.out.println("Nome alterado!");
+								}
+								System.out.println("Deseja mudar o endereco principal? (S/N)");
+								String resp = in.nextLine();
+								if (resp.equals("S") || resp.equals("s")) {
+									System.out.println("Qual o nome do novo endereco?");
+									String resp1 = in.nextLine();
+									Endereco endereco = new Endereco(resp1);
+									cc.nomeCurso(nome).setEndereco(endereco);
+								}
+								System.out.println("Dados alterados com sucesso!");
+							} 
+								
+							else if (tipoM == 3) {
+								System.out.println("O que deseja fazer no repositorio? ");
+								System.out.println("1 - Checar se um curso existe");
+								System.out.println("2 - Remover um curso do repositorio");
+								int resposta = Integer.parseInt(in.nextLine());
+								if (resposta == 1) {
+									System.out.println("Qual o nome do curso que deseja checar?");
+									String nome = in.nextLine();
+									if (cc.procurarCurso(cc.nomeCurso(nome))) {
+										System.out.println("O curso " + nome + " esta no repositorio.");
+									}
+									else {
+										System.out.println("O curso " + nome + " nao esta no repositorio.");
+									}
+								}
+								if (resposta == 2) {
+									System.out.println("Qual o nome do curso que deseja remover?");
+									String nome = in.nextLine();
+									cc.removerCurso(cc.nomeCurso(nome));
+									System.out.println("Curso removido com sucesso");
+								}
+								}
+
+							}
+						}	
 				}
 
 				else if (codigoRegistro == 3) {
@@ -227,7 +312,7 @@ public class Programa {
 
 						}
 						else if (manipAlunos == 4) {
-							System.out.println("Digite o nome do aluno que terá o cadastro removido!");
+							System.out.println("Digite o nome do aluno que terï¿½ o cadastro removido!");
 							String nomeAluno = in.nextLine();
 							if (cc.procurarPessoa(nomeAluno)) {
 								cc.removerPessoa(nomeAluno);
@@ -306,7 +391,7 @@ public class Programa {
 
 						}
 						else if (manipFuncionarios == 4) {
-							System.out.println("Digite o nome do funcionario que terá o cadastro removido!");
+							System.out.println("Digite o nome do funcionario que terï¿½ o cadastro removido!");
 							String nomeFuncionario = in.nextLine();
 							if (cc.procurarPessoa(nomeFuncionario)) {
 								cc.removerPessoa(nomeFuncionario);
@@ -336,7 +421,7 @@ public class Programa {
 		catch (CursoExistenteException x) {
 			System.out.println(x.getMessage());
 		}
-		catch (CursoNaoExistenteException x) { //calma que o erro irá sumir a medida que fomos criando os codigos
+		catch (CursoNaoExistenteException x) { //calma que o erro irï¿½ sumir a medida que fomos criando os codigos
 			System.out.println(x.getMessage());
 		}
 		catch (DisciplinaCadastradaException x) {

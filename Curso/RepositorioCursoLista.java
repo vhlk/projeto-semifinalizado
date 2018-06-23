@@ -30,11 +30,11 @@ public class RepositorioCursoLista implements RepositorioCurso {
 		}
 	}
 	
-	public void atualizar(Curso atual, Curso novo) {
-		if (this.course == atual) {
+	public void atualizar(Curso novo) {
+		if (this.course.comparador(novo)) {
 			this.course = novo;
 		} else {
-			this.prox.atualizar(atual, novo);
+			this.prox.atualizar(novo);
 		}
 	}
 

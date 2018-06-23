@@ -28,9 +28,9 @@ public class CadastroCurso {
 		return repositorioCurso.procurar(curso);
 	}
 	
-	public void atualizarCurso(Curso antigo, Curso atual) throws CursoNaoExistenteException{
-		if (repositorioCurso.procurar(antigo) == true) {
-			repositorioCurso.atualizar(antigo, atual);
+	public void atualizarCurso(Curso novo) throws CursoNaoExistenteException{
+		if (repositorioCurso.procurar(novo) == true) {
+			repositorioCurso.atualizar(novo);
 		}
 		else {
 			throw new CursoNaoExistenteException();
