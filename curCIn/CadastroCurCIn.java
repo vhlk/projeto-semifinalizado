@@ -103,15 +103,19 @@ public class CadastroCurCIn {
 		cadastroPessoa.inserirPessoa(pessoa);
 	}
 	
-	public boolean procurarPessoa(Pessoa pessoa) {
-		return cadastroPessoa.procurarPessoa(pessoa);
+	public boolean procurarPessoa(String nomeAluno) {
+		return cadastroPessoa.procurarPessoa(nomeAluno);
 	}
 	
 	public void atualizarPessoa(Pessoa novo) throws PessoaNaoEncontradaException{
 		cadastroPessoa.atualizarPessoa(novo);
 	}
 	
-	public void removerPessoa(Pessoa pessoa) throws PessoaNaoEncontradaException{
+	public void removerPessoa(String pessoa) throws PessoaNaoEncontradaException{
 		cadastroPessoa.removerPessoa(pessoa);
+	}
+	
+	public Pessoa nomePessoa(String nome) {
+		return cadastroPessoa.nomePessoa(nome);
 	}
 }

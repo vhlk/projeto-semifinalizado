@@ -1,11 +1,13 @@
 package Pessoa;
 
+import Cantina.Cantina;
+
 public class RepositorioPessoaArray implements RepositorioPessoa {
 	private Pessoa[] array;
 	private int contador;
 
 	public RepositorioPessoaArray() {
-		this.array = new Pessoa[150];
+		this.array = new Pessoa[50];
 		this.contador = 0;
 	}
 
@@ -21,7 +23,7 @@ public class RepositorioPessoaArray implements RepositorioPessoa {
 		contador++;
 	}
 
-	public void remover(Pessoa nome) {
+	public void remover(String nome) {
 		for (int i = 0; i < array.length; i++) {
 			if (this.array[i].equals(nome)) {
 				for (int j = i; j < array.length; j++) {
@@ -50,13 +52,22 @@ public class RepositorioPessoaArray implements RepositorioPessoa {
 		}
 	}
 
-	public boolean procurar(Pessoa nome) {
+	public boolean procurar(String nome) {
 		for (int i = 0; i < array.length; i++) {
-			if (this.array[i].equals(nome)) {
+			if (this.array[i]!=null && this.array[i].equals(nome)) {
 				return true;
 			}
 		}
 		return false;
 	}
 
+	public Pessoa nome(String nome) {
+		Pessoa pessoa = null;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].getNome().equals(nome)) {
+				pessoa = array[i];
+			}
+		}
+		return pessoa;
+	}
 }

@@ -9,7 +9,7 @@ import Material.*;
 import Pessoa.*;
 
 public class Programa {
-	public static void main(String[] args) throws CantinaExistenteException, CantinaNaoExistenteException {
+	public static void main(String[] args) throws CantinaExistenteException, CantinaNaoExistenteException, CursoExistenteException, CursoNaoExistenteException, DisciplinaCadastradaException, DisciplinaNaoCadastradaException, DisciplinaNaoEncontradaException, MaterialExistenteException, MaterialNaoExistenteException, MensalidadeIncorretaException, PessoaExistenteException, PessoaNaoEncontradaException {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Bem vindo ao registro do CurCIn!");
 		System.out.println("Para iniciar, que tipo de repositorio deseja utilizar?");
@@ -31,14 +31,15 @@ public class Programa {
 				System.out.println("2 - Curso");
 				System.out.println("3 - Disciplina");
 				System.out.println("4 - Material");
-				System.out.println("5 - Pessoa");
+				System.out.println("5 - Aluno");
+				System.out.println("6 - Funcionario");
 				int codigoRegistro = Integer.parseInt(in.nextLine());
 
 				if (codigoRegistro == 0) {
 					repetidor = false;
 				}
 
-				if (codigoRegistro == 1) {
+				else if (codigoRegistro == 1) {
 					System.out.println("Você escolheu cantina! O que você deseja fazer?");
 					System.out.println("1 - Criar uma cantina e registrá-la no repositório");
 					System.out.println("2 - Manipular as cantinas existentes.");
@@ -146,7 +147,6 @@ public class Programa {
 							}
 
 						}
-
 					}
 				}
 
@@ -163,15 +163,206 @@ public class Programa {
 				}
 
 				else if (codigoRegistro == 5) {
+					System.out.println("Voce escolheu Aluno! O que deseja fazer a seguir?");
+					System.out.println("1 - Adicionar um aluno ao sistema");
+					System.out.println("2 - Manipular os cadastros dos alunos existentes");
+					int cRAluno = Integer.parseInt(in.nextLine());
+					if (cRAluno == 1) {
+						System.out.println("Voce deseja adicionar um aluno!");
+						System.out.println("Digite o nome do aluno por favor");
+						String nomeAluno = in.nextLine();
+						System.out.println("Digite a sua data de nascimento por favor");
+						String dataNascAluno = in.nextLine();
+						String matricula = nomeAluno+"-"+dataNascAluno;
+						Aluno alun = new Aluno (nomeAluno, dataNascAluno, matricula);
+						cc.inserirPessoa(alun);
+						System.out.println("Voce adicionou "+nomeAluno+" com sucesso!");
+
+					}
+					else if (cRAluno == 2) {
+						System.out.println("OK, voce decidiu manipular os cadastros existentes");
+						System.out.println("O que deseja fazer?");
+						System.out.println("1 - Ver se um aluno esta matriculado");
+						System.out.println("2 - Imprimir dados de alguma aluno em especifico");
+						System.out.println("3 - Atualizar algum cadastro de aluno");
+						System.out.println("4 - Remover algum cadastro de aluno");
+						int manipAlunos = Integer.parseInt(in.nextLine());
+
+						if (manipAlunos == 1) {
+							System.out.println("Por favor digite o nome do aluno");
+							String nomeAluno = in.nextLine();
+							if (cc.procurarPessoa(nomeAluno)) {
+								System.out.println("O aluno se encontra em nossos sistemas");
+							}
+							else {
+								System.out.println("Nao conseguimos encontrar o aluno, por favor tente novamente");
+							}
+
+						}
+						else if (manipAlunos == 2) {
+							System.out.println("Por favor digite o nome do aluno que deseja");
+							String nomeAluno = in.nextLine();
+							if (cc.procurarPessoa(nomeAluno)) {
+								Aluno este = (Aluno) cc.nomePessoa(nomeAluno);
+								System.out.println("Sua matricula e: "+este.getMatricula());
+								System.out.println("Sua data de nascimento e: "+este.getNascimento());
+							}
+							else {
+								System.out.println("Nao conseguimos encontrar o aluno, por favor tente novamente");
+							}
+						}
+						else if (manipAlunos == 3) {
+							System.out.println("Por favor digite o nome do aluno");
+							String nomeAluno = in.nextLine();
+							if (cc.procurarPessoa(nomeAluno)) {
+								System.out.println("Por favor insira a data de nascimento nova");
+								String dataNovaAluno = in.nextLine();
+								String matricAluno = nomeAluno+"-"+dataNovaAluno;
+								Aluno novo = new Aluno (nomeAluno, dataNovaAluno, matricAluno);
+								cc.atualizarPessoa(novo);								
+							}
+							else {
+								System.out.println("Aluno nao encontrado");
+							}
+
+						}
+						else if (manipAlunos == 4) {
+							System.out.println("Digite o nome do aluno que terá o cadastro removido!");
+							String nomeAluno = in.nextLine();
+							if (cc.procurarPessoa(nomeAluno)) {
+								cc.removerPessoa(nomeAluno);
+							}
+							else {
+								System.out.println("Aluno nao encontrado");
+							}
+
+						}
+					}
 
 				}
+				else if (codigoRegistro == 6) {
+					System.out.println("Voce escolheu Funcionario! O que deseja fazer a seguir?");
+					System.out.println("1 - Adicionar um funcionario ao sistema");
+					System.out.println("2 - Manipular os cadastros dos funcionarios existentes");
+					int cRFuncionario = Integer.parseInt(in.nextLine());
+					if (cRFuncionario == 1) {
+						System.out.println("Voce deseja adicionar um funcionario!");
+						System.out.println("Digite o nome do funcionario por favor");
+						String nomeFuncionario = in.nextLine();
+						System.out.println("Digite a sua data de nascimento por favor");
+						String dataNascFuncionario = in.nextLine();
+						System.out.println("Digite seu cpf por favor");
+						Funcionario func = new Funcionario (nomeFuncionario, dataNascFuncionario, dataNascFuncionario);
+						cc.inserirPessoa(func);
+						System.out.println("Voce adicionou "+nomeFuncionario+" com sucesso!");
+
+					}
+					else if (cRFuncionario == 2) {
+						System.out.println("OK, voce decidiu manipular os cadastros existentes");
+						System.out.println("O que deseja fazer?");
+						System.out.println("1 - Ver se um funcionario esta matriculado");
+						System.out.println("2 - Imprimir dados de alguma funcionario em especifico");
+						System.out.println("3 - Atualizar algum cadastro de funcionario");
+						System.out.println("4 - Remover algum cadastro de funcionario");
+						int manipFuncionarios = Integer.parseInt(in.nextLine());
+
+						if (manipFuncionarios == 1) {
+							System.out.println("Por favor digite o nome do funcionario");
+							String nomeFuncionario = in.nextLine();
+							if (cc.procurarPessoa(nomeFuncionario)) {
+								System.out.println("O funcionario se encontra em nossos sistemas");
+							}
+							else {
+								System.out.println("Nao conseguimos encontrar o funcionario, por favor tente novamente");
+							}
+
+						}
+						else if (manipFuncionarios == 2) {
+							System.out.println("Por favor digite o nome do funcionario que deseja");
+							String nomeFuncionario = in.nextLine();
+							if (cc.procurarPessoa(nomeFuncionario)) {
+								Funcionario este = (Funcionario) cc.nomePessoa(nomeFuncionario);
+								System.out.println("Seu cpf e: "+este.getCpf());
+								System.out.println("Sua data de nascimento e: "+este.getNascimento());
+							}
+							else {
+								System.out.println("Nao conseguimos encontrar o funcionario, por favor tente novamente");
+							}
+						}
+						else if (manipFuncionarios == 3) {
+							System.out.println("Por favor digite o nome do funcionario");
+							String nomeFuncionario = in.nextLine();
+							if (cc.procurarPessoa(nomeFuncionario)) {
+								System.out.println("Por favor insira a data de nascimento nova");
+								String dataNovaFuncionario = in.nextLine();
+								System.out.println("Por favor insira o cpf novo");
+								String cpfNovoFuncionario = in.nextLine();
+								Aluno novo = new Aluno (nomeFuncionario, dataNovaFuncionario, cpfNovoFuncionario);
+								cc.atualizarPessoa(novo);								
+							}
+							else {
+								System.out.println("Aluno nao encontrado");
+							}
+
+						}
+						else if (manipFuncionarios == 4) {
+							System.out.println("Digite o nome do funcionario que terá o cadastro removido!");
+							String nomeFuncionario = in.nextLine();
+							if (cc.procurarPessoa(nomeFuncionario)) {
+								cc.removerPessoa(nomeFuncionario);
+							}
+							else {
+								System.out.println("Aluno nao encontrado");
+							}
+
+						}
+					}
+
+				}
+
+				else if (codigoRegistro > 6 || codigoRegistro < 0) {
+					System.out.println("Entrada invalida, por favor tente novamente!");
+				}
+				System.out.println("");
 			}
 
 		} catch (CantinaExistenteException x) {
 			System.out.println(x.getMessage());
 		}
-		 catch (CantinaNaoExistenteException y) {
-			 System.out.println(y.getMessage());
-		 }
+		catch (CantinaNaoExistenteException x) {
+			System.out.println(x.getMessage());
+		}
+
+		catch (CursoExistenteException x) {
+			System.out.println(x.getMessage());
+		}
+		catch (CursoNaoExistenteException x) { //calma que o erro irá sumir a medida que fomos criando os codigos
+			System.out.println(x.getMessage());
+		}
+		catch (DisciplinaCadastradaException x) {
+			System.out.println(x.getMessage());
+		}
+		catch (DisciplinaNaoCadastradaException x) {
+			System.out.println(x.getMessage());
+		}
+		catch (DisciplinaNaoEncontradaException x) {
+			System.out.println(x.getMessage());
+		}
+		catch (MaterialExistenteException x) {
+			System.out.println(x.getMessage());
+		}
+		catch (MaterialNaoExistenteException x) {
+			System.out.println(x.getMessage());
+		}
+		catch (MensalidadeIncorretaException x) {
+			System.out.println(x.getMessage());
+		}
+		catch (PessoaExistenteException x) {
+			System.out.println(x.getMessage());
+		}
+		catch (PessoaNaoEncontradaException x) {
+			System.out.println(x.getMessage());
+		}
+
 	}
 }
