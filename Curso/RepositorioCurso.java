@@ -8,7 +8,7 @@ public interface RepositorioCurso {
 	
 	public boolean procurar(Curso curso);
 	
-	public void atualizar(Curso antigo, Curso atual);
+	public void atualizar(Curso novo);
 	
 	public void remover(Curso curso) throws CursoNaoExistenteException;
 

@@ -75,8 +75,8 @@ public class CadastroCurCIn {
 		return cadastroCurso.procurarCurso(curso);
 	}
 	
-	public void atualizarCurso(Curso antigo, Curso atual) throws CursoNaoExistenteException{
-		cadastroCurso.atualizarCurso(antigo, atual);
+	public void atualizarCurso(Curso novo) throws CursoNaoExistenteException{
+		cadastroCurso.atualizarCurso(novo);
 	}
 	
 	public void removerCurso(Curso curso) throws CursoNaoExistenteException{
