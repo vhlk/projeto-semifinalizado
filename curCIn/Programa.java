@@ -9,7 +9,7 @@ import Material.*;
 import Pessoa.*;
 
 public class Programa {
-	public static void main(String[] args) throws CantinaExistenteException, CantinaNaoExistenteException, CursoExistenteException, CursoNaoExistenteException, DisciplinaCadastradaException, DisciplinaNaoCadastradaException, DisciplinaNaoEncontradaException, MaterialExistenteException, MaterialNaoExistenteException, MensalidadeIncorretaException, PessoaExistenteException, PessoaNaoEncontradaException {
+	public static void main(String[] args) throws CantinaExistenteException, CantinaNaoExistenteException, CursoExistenteException, CursoNaoExistenteException, DisciplinaCadastradaException, DisciplinaNaoCadastradaException, DisciplinaNaoEncontradaException, NenhumaDisciplinaCadastradaException, MaterialExistenteException, MaterialNaoExistenteException, MensalidadeIncorretaException, PessoaExistenteException, PessoaNaoEncontradaException {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Bem vindo ao registro do CurCIn!");
 		System.out.println("Para iniciar, que tipo de repositorio deseja utilizar?");
@@ -233,14 +233,64 @@ public class Programa {
 									cc.removerCurso(cc.nomeCurso(nome));
 									System.out.println("Curso removido com sucesso");
 								}
-								}
-
 							}
 						}	
 				}
 
 				else if (codigoRegistro == 3) {
-
+					System.out.println("Voce escolheu disciplina! O que voce deseja fazer?");
+					System.out.println("1 - Cadastrar uma disciplina");
+					System.out.println("2 - Ver as disciplinas cadastradas");
+					System.out.println("3 - Alterar a mensalidade de uma disciplina");
+					System.out.println("4 - Remover uma disciplina");
+					int opcaoDisciplina = Integer.parseInt(in.nextLine());
+					
+					if (opcaoDisciplina == 1) {
+						System.out.println("Voce escolheu cadastrar uma disciplina.");
+						System.out.println("Digite o nome da disciplina");
+						String nomeDisciplina = in.nextLine();
+						System.out.println("Digite o valor da mensalidade da disciplina");
+						double mensalidade = Double.parseDouble(in.nextLine());
+						Disciplina disciplina = new Disciplina(nomeDisciplina, mensalidade);
+						cc.cadastrarDisciplina(disciplina);
+						System.out.println("Cadastro efetuado com sucesso!");
+						System.out.println("");
+					} else if (opcaoDisciplina == 2) {
+						Disciplina[] arrayAux = cc.dadosDisciplina();
+						if (arrayAux[0] != null) {
+							for (int i = 0; i < arrayAux.length; i++) {
+								if (arrayAux[i] != null) {
+									System.out.printf("%s - R$%.2f %n", arrayAux[i].getNome(), arrayAux[i].getMensalidade());
+								}
+							}
+						} else {
+							System.out.println("Nenhuma disciplina foi cadastrada ainda.");
+						}
+						System.out.println("");
+					} else if (opcaoDisciplina == 3) {
+						System.out.println("Digite o nome da disciplina que deseja alterar a mensalidade");
+						String nomeDisciplina = in.nextLine();
+						if (cc.procurarDisciplina(nomeDisciplina)) {
+							System.out.println("Digite o novo valor da mensalidade");
+							double mensalidadeNova = Double.parseDouble(in.nextLine());
+							Disciplina disciplina = new Disciplina(nomeDisciplina, mensalidadeNova);
+							cc.atualizarMensalidade(disciplina);
+							System.out.println("Mensalidade atualizada com sucesso!");
+							System.out.println("");
+						} else {
+							System.out.println("Disciplina nao encontrada");
+							System.out.println("");
+						}
+						
+					} else if (opcaoDisciplina == 4) {
+						System.out.println("Digite o nome da disciplina que deseja remover");
+						String nomeDisciplina = in.nextLine();
+						if (cc.procurarDisciplina(nomeDisciplina)) {
+							cc.removerDisciplina(nomeDisciplina);
+							System.out.println("Disciplina removida com sucesso!");
+							System.out.println("");
+						}
+					}
 				}
 
 				else if (codigoRegistro == 4) {
@@ -473,6 +523,9 @@ public class Programa {
 			System.out.println(x.getMessage());
 		}
 		catch (DisciplinaNaoEncontradaException x) {
+			System.out.println(x.getMessage());
+		}
+		catch (NenhumaDisciplinaCadastradaException x) {
 			System.out.println(x.getMessage());
 		}
 		catch (MaterialExistenteException x) {

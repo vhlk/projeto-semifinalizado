@@ -83,20 +83,24 @@ public class CadastroCurCIn {
 		cadastroCurso.removerCurso(curso);
 	}
 	
-	public void cadastrarDisciplina(Disciplina disciplina) throws DisciplinaCadastradaException {
+	public void cadastrarDisciplina(Disciplina disciplina) throws DisciplinaCadastradaException, MensalidadeIncorretaException {
 		cadastroDisciplina.cadastrarDisciplina(disciplina);
 	}
 	
-	public void removerDisciplina(Disciplina disciplina) throws DisciplinaNaoCadastradaException {
-		cadastroDisciplina.removerDisciplina(disciplina);
+	public void removerDisciplina(String nomeDisciplina) throws DisciplinaNaoCadastradaException {
+		cadastroDisciplina.removerDisciplina(nomeDisciplina);
 	}
 	
-	public boolean procurarDisciplina(Disciplina disciplina) {
-		return cadastroDisciplina.procurarDisciplina(disciplina);
+	public boolean procurarDisciplina(String nomeDisciplina) {
+		return cadastroDisciplina.procurarDisciplina(nomeDisciplina);
 	}
 	
-	public void atualizarMensalidade(Disciplina disciplinaAntiga, Disciplina disciplinaNova) throws MensalidadeIncorretaException {
-		cadastroDisciplina.atualizarMensalidade(disciplinaAntiga, disciplinaNova);
+	public void atualizarMensalidade(Disciplina disciplina) throws MensalidadeIncorretaException, DisciplinaNaoCadastradaException {
+		cadastroDisciplina.atualizarMensalidade(disciplina);
+	}
+	
+	public Disciplina[] dadosDisciplina() throws NenhumaDisciplinaCadastradaException {
+		return cadastroDisciplina.dados();
 	}
 	
 	public void inserirPessoa(Pessoa pessoa) throws PessoaExistenteException{

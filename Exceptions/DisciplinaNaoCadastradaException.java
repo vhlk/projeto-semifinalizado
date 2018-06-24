@@ -4,7 +4,7 @@ package Exceptions;
 public class DisciplinaNaoCadastradaException extends Exception {
 	
 	public DisciplinaNaoCadastradaException() {
-		super("Disciplina nao cadastrada.");
+		super("A disciplina nao esta cadastrada.");
 	}
 	
 }

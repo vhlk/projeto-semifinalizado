@@ -15,33 +15,48 @@ public class CadastroDisciplina {
 	}
 
 	
-	public void cadastrarDisciplina(Disciplina disciplina) throws DisciplinaCadastradaException {
-		if (!repositorioDisciplina.procurar(disciplina)) {
-			repositorioDisciplina.cadastrar(disciplina);
+	public void cadastrarDisciplina(Disciplina disciplina) throws DisciplinaCadastradaException, MensalidadeIncorretaException {
+		if (!repositorioDisciplina.procurar(disciplina.getNome())) {
+			double aux = disciplina.getMensalidade();
+			if (disciplina.checkMensalidade(aux)) {
+				repositorioDisciplina.cadastrar(disciplina);
+			} else {
+				throw new MensalidadeIncorretaException();
+			}
 		} else {
 			throw new DisciplinaCadastradaException(); 
 		}
 	}
 	
-	public void removerDisciplina(Disciplina disciplina) throws DisciplinaNaoCadastradaException {
-		if (repositorioDisciplina.procurar(disciplina)) {
-			repositorioDisciplina.remover(disciplina);
+	public void removerDisciplina(String nomeDisciplina) throws DisciplinaNaoCadastradaException {
+		if (repositorioDisciplina.procurar(nomeDisciplina)) {
+			repositorioDisciplina.remover(nomeDisciplina);
 		} else {
 			throw new DisciplinaNaoCadastradaException();
 		}
 	}
 	
-	public boolean procurarDisciplina(Disciplina disciplina) {
-		return repositorioDisciplina.procurar(disciplina);
+	public boolean procurarDisciplina(String nomeDisciplina) {
+		return repositorioDisciplina.procurar(nomeDisciplina);
 	}
 	
-	public void atualizarMensalidade(Disciplina disciplinaAntiga, Disciplina disciplinaNova) throws MensalidadeIncorretaException {
-		if (repositorioDisciplina.procurar(disciplinaAntiga)) {
-			if (disciplinaNova.checkMensalidade(disciplinaNova.getMensalidade())) {
-				repositorioDisciplina.atualizarMensalidade(disciplinaAntiga, disciplinaNova);
+	public void atualizarMensalidade(Disciplina disciplina) throws MensalidadeIncorretaException, DisciplinaNaoCadastradaException {
+		if (repositorioDisciplina.procurar(disciplina.getNome())) {
+			if (disciplina.checkMensalidade(disciplina.getMensalidade())) {
+				repositorioDisciplina.atualizarMensalidade(disciplina);
 			} else {
 				throw new MensalidadeIncorretaException();
 			}
+		} else {
+			throw new DisciplinaNaoCadastradaException();
+		}
+	}
+	
+	public Disciplina[] dados() throws NenhumaDisciplinaCadastradaException {
+		if (repositorioDisciplina.dados().length > 0) {
+			return repositorioDisciplina.dados();
+		} else {
+			throw new NenhumaDisciplinaCadastradaException();
 		}
 	}
 }
