@@ -55,7 +55,7 @@ public class CadastroCurCIn {
 		cadastroMaterial.inserirMaterial(material);
 	}
 	
-	public boolean procurarMaterial(Material material) {
+	public boolean procurarMaterial(String material) {
 		return cadastroMaterial.procurarMaterial(material);
 	}
 	
@@ -63,7 +63,7 @@ public class CadastroCurCIn {
 		cadastroMaterial.atualizarMaterial(antigo, atual);
 	}
 	
-	public void removerMaterial(Material material) throws MaterialNaoExistenteException{
+	public void removerMaterial(String material) throws MaterialNaoExistenteException{
 		cadastroMaterial.removerMaterial(material);
 	}
 	

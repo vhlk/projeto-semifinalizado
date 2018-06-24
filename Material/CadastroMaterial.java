@@ -24,7 +24,7 @@ public class CadastroMaterial {
 		}
 	}
 	
-	public boolean procurarMaterial(Material material) {
+	public boolean procurarMaterial(String material) {
 		return repositorioMaterial.procurar(material);
 	}
 	
@@ -37,7 +37,7 @@ public class CadastroMaterial {
 		}
 	}
 	
-	public void removerMaterial(Material material) throws MaterialNaoExistenteException{
+	public void removerMaterial(String material) throws MaterialNaoExistenteException{
 		if (repositorioMaterial.procurar(material) == true) {
 			repositorioMaterial.remover(material);
 		}

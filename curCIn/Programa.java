@@ -244,7 +244,49 @@ public class Programa {
 				}
 
 				else if (codigoRegistro == 4) {
+					System.out.println("Voce escolheu Material! O que deseja fazer a seguir?");
+					System.out.println("1 - Registrar um material no repositorio");
+					System.out.println("2 - Remover um material do repositorio.");
+					System.out.println("3 - Atualizar um material do repositorio.");
+					int cRMaterial = Integer.parseInt(in.nextLine());
+					if (cRMaterial == 1) {
+						System.out.println("Voce deseja registrar um material, siga as instrucoes ate o final!");
+						System.out.println("Digite o titulo do material por favor");
+						String tit = in.nextLine();
+						System.out.println("Digite o tipo do material por favor");
+						String tip = in.nextLine();
+						System.out.println("Digite o inteiro do nivel do material por favor");
+						int nvl = Integer.parseInt(in.nextLine());
+						Material material = new Material(tit, tip, nvl);
+						if (cc.procurarMaterial(tit)) {
+							throw new MaterialExistenteException();
+						} else {
+							cc.inserirMaterial(material);
+							System.out.println("Voce adicionou " + material.getTitulo() + " com sucesso!");
 
+						}
+
+					} else if (cRMaterial == 2) {
+						System.out.println("Voce deseja remover um material!");
+						System.out.println("Digite o titulo do material por favor");
+						String tit = in.nextLine();
+
+						if (cc.procurarMaterial(tit)) {
+							cc.removerMaterial(tit);
+							System.out.println("Voce removeu " + tit + " com sucesso!");
+
+
+						} else {
+							throw new MaterialNaoExistenteException();
+						}
+
+					} else if (cRMaterial == 3) {
+						System.out.println("Voce deseja atualizar um material!");
+						System.out.println("Digite o titulo do material por favor");
+						String tit = in.nextLine();
+
+
+					}
 				}
 
 				else if (codigoRegistro == 5) {
