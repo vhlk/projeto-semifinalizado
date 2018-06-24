@@ -1,7 +1,5 @@
 package Disciplina;
 
-import Exceptions.MensalidadeIncorretaException;
-
 public class RepositorioDisciplinaLista implements RepositorioDisciplina {
 	private Disciplina atual;
 	private RepositorioDisciplinaLista prox;
@@ -20,38 +18,48 @@ public class RepositorioDisciplinaLista implements RepositorioDisciplina {
 		}
 	}
 	
-	public void remover(Disciplina disciplina) {
-		if (this.atual == disciplina) {
+	public void remover(String nomeDisciplina) {
+		if (this.atual.getNome().equals(nomeDisciplina)) {
 			this.atual = this.prox.atual;
 			this.prox = this.prox.prox;
-		} else {
-			this.prox.remover(disciplina);
+		}
+		if (this.prox != null) {
+			this.prox.remover(nomeDisciplina);
 		}
 	}
 	
-	public boolean procurar(Disciplina disciplina) {
-		if (this.atual == disciplina) {
+	public boolean procurar(String nomeDisciplina) {
+		if (this.atual != null && this.atual.getNome().equals(nomeDisciplina)) {
 			return true;
 		}
 		if (this.prox != null) {
-			return this.prox.procurar(disciplina);
+			return this.prox.procurar(nomeDisciplina);
 		} else {
 			return false;
 		}
 	}
 	
-	public void atualizar(Disciplina disciplinaAtual, Disciplina disciplinaNova) {
-		if (this.atual == disciplinaAtual) {
-			this.atual = disciplinaNova;
+	public void atualizarMensalidade(Disciplina disciplina) {
+		if (this.atual.getNome().equals(disciplina.getNome())) {
+			this.atual.setMensalidade(disciplina.getMensalidade());
 		} else {
-			this.prox.atualizar(disciplinaAtual, disciplinaNova);
+			this.prox.atualizarMensalidade(disciplina);
 		}
 	}
-
-	@Override
-	public void atualizarMensalidade(Disciplina disciplinaAntiga, Disciplina disciplinaNova)
-			throws MensalidadeIncorretaException {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	public Disciplina[] dados() {
+		Disciplina[] aux = new Disciplina[10];
+		boolean aux2 = true;
+		int aux3 = 0;
+		if (this.atual != null && aux2) {
+			aux[aux3] = this.atual;
+			aux3++;	
+		} else {
+			aux2 = false;
+		}
+		if (aux2) {
+			this.prox.dados();
+		}
+		return aux;
+	}	
 }
