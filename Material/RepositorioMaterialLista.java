@@ -18,8 +18,8 @@ public class RepositorioMaterialLista implements RepositorioMaterial {
 		}
 	}
 
-	public boolean procurar(Material mat) {
-		if (this.mat == mat) {
+	public boolean procurar(String mat) {
+		if (this.mat.equals(mat)) {
 			return true;
 		}
 		if (this.proximo != null) {
@@ -29,9 +29,9 @@ public class RepositorioMaterialLista implements RepositorioMaterial {
 		}
 	}
 
-	public void remover(Material mat) {
+	public void remover(String mat) {
 		if (this.mat != null) {
-			if (this.mat == mat) {
+			if (this.mat.equals(mat)) {
 				this.mat = this.proximo.mat;
 				this.proximo = this.proximo.proximo;
 			} else {

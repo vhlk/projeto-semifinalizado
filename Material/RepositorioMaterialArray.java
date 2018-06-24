@@ -30,10 +30,10 @@ public class RepositorioMaterialArray implements RepositorioMaterial {
 		}
 	}
 	
-	public boolean procurar(Material material) {
+	public boolean procurar(String material) {
 		boolean tem = false;
 		for(int i = 0; i < materiais.length; i++) {
-			if (materiais[i] == material) {
+			if (materiais[i].equals(material)) {
 				tem = true;
 			}
 		}
@@ -49,9 +49,9 @@ public class RepositorioMaterialArray implements RepositorioMaterial {
 		}
 	}
 		
-	public void remover(Material material) {
+	public void remover(String material) {
 		for (int i = 0; i < materiais.length; i++) {
-			if (materiais[i] == material) {
+			if (materiais[i].equals(material)) {
 				materiais[i] = null;
 				return;
 			}
