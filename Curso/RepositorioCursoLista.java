@@ -49,7 +49,13 @@ public class RepositorioCursoLista implements RepositorioCurso {
 
 	@Override
 	public Curso nome(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		Curso curso = null;
+		if (this.curso.getNome().equals(nome)) {
+			curso = this.curso;
+			return curso;
+		}
+		else {
+			return this.prox.nome(nome);
+		}
 	}
 }
