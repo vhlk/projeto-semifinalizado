@@ -49,8 +49,7 @@ public class RepositorioCursoLista implements RepositorioCurso {
 
 	@Override
 	public Curso nome(String nome) {
-		Curso curso = null;
-		if (this.curso.getNome().equals(nome)) {
+		if (this.course.getNome().equals(nome)) {
 			curso = this.curso;
 			return curso;
 		}
