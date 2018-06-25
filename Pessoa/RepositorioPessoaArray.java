@@ -25,7 +25,7 @@ public class RepositorioPessoaArray implements RepositorioPessoa {
 
 	public void remover(String nome) {
 		for (int i = 0; i < array.length; i++) {
-			if (this.array[i].getNome()!=null && this.array[i].getNome().equals(nome)) {
+			if (this.array[i]!=null && this.array[i].getNome().equals(nome)) {
 				for (int j = i; j < array.length; j++) {
 					this.array[i] = this.array[i + 1];
 				}
@@ -35,7 +35,7 @@ public class RepositorioPessoaArray implements RepositorioPessoa {
 
 	public void atualizar(Pessoa novo) {
 		for (int i = 0; i < array.length; i++) {
-			if (this.array[i].equals(novo)) {
+			if (this.array[i]!=null && this.array[i].getNome().equals(novo.getNome())) {
 				if (novo instanceof Aluno) {
 					Aluno novoAluno = (Aluno) novo;
 					Aluno antigoAluno = (Aluno) array[i];
@@ -54,7 +54,7 @@ public class RepositorioPessoaArray implements RepositorioPessoa {
 
 	public boolean procurar(String nome) {
 		for (int i = 0; i < array.length; i++) {
-			if (this.array[i].getNome()!=null && this.array[i].getNome().equals(nome)) {
+			if (this.array[i]!=null && this.array[i].getNome().equals(nome)) {
 				return true;
 			}
 		}
@@ -64,7 +64,7 @@ public class RepositorioPessoaArray implements RepositorioPessoa {
 	public Pessoa nome(String nome) {
 		Pessoa pessoa = null;
 		for (int i = 0; i < array.length; i++) {
-			if (array[i].getNome().equals(nome)) {
+			if (array[i]!=null && array[i].getNome().equals(nome)) {
 				pessoa = array[i];
 			}
 		}

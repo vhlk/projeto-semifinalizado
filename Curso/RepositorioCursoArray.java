@@ -9,16 +9,6 @@ public class RepositorioCursoArray implements RepositorioCurso {
 		contador = 0;
 	}
 
-	public Curso nome(String nome) {
-		Curso curso = null;
-		for (int i = 0; i < array.length; i++) {
-			if (array[i].getNome().equals(nome)) {
-				curso = array[i] ;
-			}
-		}
-		return curso;
-	}
-	
 	public void inserir(Curso curso) {
 		if (contador == array.length) {
 			Curso[] arrayNovo = new Curso[array.length * 2];
@@ -36,6 +26,16 @@ public class RepositorioCursoArray implements RepositorioCurso {
 		}
 	}
 	
+	public Curso nome(String nome) {
+		Curso curso = null;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].getNome().equals(nome)) {
+				curso = array[i] ;
+			}
+		}
+		return curso;
+	}
+
 	public boolean procurar(Curso curso) {
 		boolean tem = false;
 		for (int i = 0; i < array.length; i++) {
