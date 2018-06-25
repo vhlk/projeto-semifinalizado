@@ -153,17 +153,17 @@ public class Programa {
 				else if (codigoRegistro == 2) {
 					System.out.println("Voce escolheu curso! O que voce deseja fazer?");
 					System.out.println("1 - Inserir curso e registrar no repositorio");
-					System.out.println("2 - Realizar outras acoes");
+					System.out.println("2 - Outros");
 					int cRCurso = Integer.parseInt(in.nextLine());
-					
+
 					if (cRCurso == 1) {
-						System.out.println("Voce deseja inserir um curso!");
+						System.out.println("Voce deseja registrar um curso!");
 						System.out.println("Qual o endereco do curso? ");
 						String endereco = in.nextLine();
 						System.out.println("Quantas salas tem o curso? ");
-						int qtdSalas = in.nextInt();
+						double qtdSalas = in.nextDouble();
 						System.out.println("Quantos setores tem o curso? ");
-						int setores = in.nextInt();
+						double setores = in.nextDouble();
 						System.out.println("Qual o nome do seu curso?");
 						String nome = in.nextLine();
 						Curso curso = new Curso(nome, endereco, qtdSalas, setores);
@@ -173,11 +173,11 @@ public class Programa {
 					}	
 					else if (cRCurso == 2) {
 						System.out.println("O que deseja fazer?");
-						System.out.println("1 - Consultar dados de algum curso especifico");
-						System.out.println("2 - Atualizar dados sobre algum curso especifico");
+						System.out.println("1 - Imprimir dados de algum curso especifico");
+						System.out.println("2 - Manipular algum curso especifico");
 						System.out.println("3 - Manipular o repositorio");
-						int tipoM = Integer.parseInt(in.nextLine());
 
+						int tipoM = Integer.parseInt(in.nextLine());
 						if (tipoM == 1) {
 							System.out.println("Qual o nome do curso que voce deseja ver?");
 							String nome = in.nextLine();
@@ -190,16 +190,16 @@ public class Programa {
 
 						} 
 						else if (tipoM == 2) {
-							System.out.println("Qual o nome do curso que voce deseja atualizar?");
+							System.out.println("Qual o nome do curso que voce deseja manipular?");
 							String nome = in.nextLine();
 							System.out.println("Deseja mudar seu nome? (S/N)");
 							String resp = in.nextLine();
 							if (resp.equals("S") || resp.equals("s")) {
 								System.out.println("Qual sera o novo nome?");
 								String nomeNovo = in.nextLine();
-								cc.atualizarCurso(nome).setNome(nomeNovo);
+								cc.nomeCantina(nome).setNome(nomeNovo);
 								nome = nomeNovo;
-								System.out.println("Nome atualizado!");
+								System.out.println("Nome alterado!");
 							}
 							System.out.println("Deseja mudar o endereco principal? (S/N)");
 							String resp = in.nextLine();
@@ -207,18 +207,18 @@ public class Programa {
 								System.out.println("Qual o nome do novo endereco?");
 								String resp1 = in.nextLine();
 								Endereco endereco = new Endereco(resp1);
-								cc.atualizar(nome).setEndereco(endereco);
+								cc.nomeCurso(nome).setEndereco(endereco);
 							}
 							System.out.println("Dados alterados com sucesso!");
 						} 
-							
+
 						else if (tipoM == 3) {
 							System.out.println("O que deseja fazer no repositorio? ");
-							System.out.println("1 - Verificar se um curso existe");
-							System.out.println("2 - Remover um curso");
+							System.out.println("1 - Checar se um curso existe");
+							System.out.println("2 - Remover um curso do repositorio");
 							int resposta = Integer.parseInt(in.nextLine());
 							if (resposta == 1) {
-								System.out.println("Qual o nome do curso que deseja procurar?");
+								System.out.println("Qual o nome do curso que deseja checar?");
 								String nome = in.nextLine();
 								if (cc.procurarCurso(cc.nomeCurso(nome))) {
 									System.out.println("O curso " + nome + " esta no repositorio.");
@@ -235,8 +235,7 @@ public class Programa {
 							}
 						}
 					}	
-			}
-
+				}
 				else if (codigoRegistro == 3) {
 					System.out.println("Voce escolheu disciplina! O que voce deseja fazer?");
 					System.out.println("1 - Cadastrar uma disciplina");
@@ -509,13 +508,13 @@ public class Programa {
 		}
 		catch (CantinaNaoExistenteException x) {
 			System.out.println(x.getMessage());
-		}catch (CursoExistenteException x) {
+		}
+		catch (CursoExistenteException x) {
 			System.out.println(x.getMessage());
 		}
 		catch (CursoNaoExistenteException x) { //calma que o erro ira sumir a medida que fomos criando os codigos
 			System.out.println(x.getMessage());
 		}
-
 		catch (DisciplinaCadastradaException x) {
 			System.out.println(x.getMessage());
 		}
@@ -524,7 +523,7 @@ public class Programa {
 		}
 		catch (DisciplinaNaoEncontradaException x) {
 			System.out.println(x.getMessage());
-		}		
+		}			
 		catch (NenhumaDisciplinaCadastradaException x) {
 			System.out.println(x.getMessage());
 		}
