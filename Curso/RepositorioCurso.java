@@ -6,9 +6,11 @@ public interface RepositorioCurso {
 	
 	public void inserir(Curso curso) throws CursoExistenteException;
 	
-	public boolean procurar(Curso curso);
+	public Curso nome (String nome);
 	
-	public void atualizar(Curso novo);
+	public boolean procurar(Curso curso) throws CursoNaoExistenteException;
+	
+	public void atualizar(Curso novo) throws CursoNaoExistenteException;
 	
 	public void remover(Curso curso) throws CursoNaoExistenteException;
 

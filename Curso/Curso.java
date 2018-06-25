@@ -4,14 +4,14 @@ public class Curso {
 
 	private String nome;
 	private String endereco;
-	private double qtdSalas;
-	private double setores;
+	private int qtdSalas;
+	private int setores;
 
-	public Curso(String nomee, String enderecoo, double qtdSalass, double setoress) {
-		this.nome = nomee;
-		this.endereco = enderecoo;
-		this.qtdSalas = qtdSalass;
-		this.setores = setoress;
+	public Curso(String nome, String endereco, int qtdSalas, int setores) {
+		this.nome = nome;
+		this.endereco = endereco;
+		this.qtdSalas = qtdSalas;
+		this.setores = setores;
 	}
 	public boolean comparador(Curso curso) {
 		if (this.getNome().equals(curso.getNome())) {
@@ -30,20 +30,20 @@ public class Curso {
 	public String getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(String enderecoo) {
-		this.endereco = enderecoo;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 	public double getSalas() {
 		return qtdSalas;
 	}
-	public void setSalas(double qtdSalass) {
-		this.qtdSalas = qtdSalass;
+	public void setSalas(int qtdSalas) {
+		this.qtdSalas = qtdSalas;
 	}
 	public double getSetores() {
 		return setores;
 	}
-	public void setSetores(double setoress) {
-		this.setores = setoress;
+	public void setSetores(int setores) {
+		this.setores = setores;
 	}
 	
 }

@@ -1,4 +1,4 @@
-package Cantina;
+package Curso;
 
 public class RepositorioCursoArray implements RepositorioCurso {
 	private Curso[] array;

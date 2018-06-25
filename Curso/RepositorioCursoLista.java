@@ -46,4 +46,10 @@ public class RepositorioCursoLista implements RepositorioCurso {
 			this.prox.remover(curso);
 		}
 	}
+
+	@Override
+	public Curso nome(String nome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
